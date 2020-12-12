@@ -1,0 +1,56 @@
+@import '/src/colors.scss';
+
+.cart-full-component {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+header {
+    flex: 0 1 48px;
+    display :flex;
+    align-items: center;
+    background: $--color-secondary;
+    color: white;
+}
+
+header i {
+    font-size: 16px;
+    margin: 12px 20px;
+}
+
+header .title {
+    margin-right: 20px;
+}
+
+.items {
+    flex: 1 1 0;
+    overflow-y: auto;
+}
+
+.total {
+    padding-top: 24px;
+    border-top: solid 1px $--color-grey;
+}
+
+.total-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    font-weight: bold;
+    color: $--color-tertiary;
+    font-size: 16px;
+}
+
+.total-item .value {
+    font-size: 18px;
+}
+
+footer {
+    padding: 12px 0;
+    border-top: solid 1px $--color-grey;
+    display: flex;
+    justify-content: center;
+}

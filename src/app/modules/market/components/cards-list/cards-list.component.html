@@ -1,0 +1,54 @@
+<div class="cards-list-component">
+    <header>
+        <h2>Market</h2>
+        <div class="search">
+            <mat-form-field>
+                <i matPrefix class="fas fa-search">&nbsp;</i>
+                <input #searchBar matInput type="search" placeholder="Search">
+            </mat-form-field>
+        </div>
+    </header>
+    <div class="filters-container">
+        <div class="filters-displayer" (click)="toggleFiltersDisplay()">
+            <ng-container *ngIf="!filtersDisplayed">
+                <i class="fas fa-plus"></i>
+                <span>Show filters</span>
+            </ng-container>
+            <ng-container *ngIf="filtersDisplayed">
+                <i class="fas fa-minus"></i>
+                <span>Hide filters</span>
+            </ng-container>
+        </div>
+        <div class="filters" *ngIf="filtersDisplayed">
+            <div class="filter-item">
+                <mat-form-field>
+                    <mat-label>Supertype</mat-label>
+                    <mat-select (selectionChange)="handleSuperTypeChange($event)">
+                        <mat-option>None</mat-option>
+                        <mat-option value="Pokémon">Pokémon</mat-option>
+                        <mat-option value="Trainer">Trainer</mat-option>
+                        <mat-option value="Energy">Energy</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="filter-item">
+                <mat-checkbox class="holo-check" (change)="handleHoloChange($event)">Holo Rare Only</mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="!loading">
+        <div class="content">
+            <div class="card" *ngFor="let card of cards$ | async">
+                <app-card-thumbnail [card]="card"></app-card-thumbnail>
+            </div>
+        </div>
+        <div class="paginator">
+            <mat-paginator [length]="totalCount$ | async" [pageSize]="(filters$ | async).pageSize" [pageIndex]="(filters$ | async).page - 1"
+                (page)="handlePageChange($event)">
+            </mat-paginator>
+        </div>
+    </ng-container>
+    <div class="loader-container" *ngIf="loading">
+        <app-loader></app-loader>
+    </div>
+</div>

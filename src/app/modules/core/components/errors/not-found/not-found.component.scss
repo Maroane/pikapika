@@ -1,0 +1,15 @@
+@import "src/colors.scss";
+
+.not-found-component {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    color: $--color-tertiary;
+    font-size: 20px;
+    text-align: center;
+}

@@ -1,0 +1,20 @@
+<div class="cart-item-component">
+    <div class="img-container">
+        <img [src]="cartItem.item.imageUrl" />
+    </div>
+    <div class="content">
+        <div class="infos">
+            <div class="name">{{ cartItem.item.name }}</div>
+            <div class="pokedex" *ngIf="cartItem.item.nationalPokedexNumber as pokedex">
+                <span class="label">N° Pokédex : </span>
+                <span>{{ pokedex }}</span>
+            </div>
+        </div>
+        <footer>
+            <div class="counter">
+                <app-cart-item-counter [cardId]="cartItem.item.id" [count]="cartItem.count"></app-cart-item-counter>
+            </div>
+            <div class="price">{{ getItemTotal() | currency:'EUR' }}</div>
+        </footer>
+    </div>
+</div>

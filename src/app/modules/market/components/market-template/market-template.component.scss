@@ -1,0 +1,34 @@
+@import "src/colors.scss";
+
+.market-template {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    flex: 1 1 0;
+    max-width: calc(100% - 280px);
+    padding-bottom: 40px;
+}
+
+aside {
+    flex: 0 1 280px;
+    max-width: 280px;
+    border-left: solid 1px $--color-grey;
+    display :flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+app-cart {
+    flex: 1 1 0;
+}
+
+footer {
+    flex: 0 1 0;
+    padding: 12px 0;
+    border-top: solid 1px $--color-grey;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,63 @@
+@import "src/colors.scss";
+
+a {
+    cursor: pointer;
+}
+
+.name:hover {
+    text-decoration: underline;
+} 
+
+.img-container {
+    height: 240px;
+    width: 240px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+}
+
+img {
+    height: 330px;
+    width: 240px;
+}
+
+.infos {
+    padding: 6px 8px;
+    border: solid 1px $--color-grey;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: white;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    color: $--color-tertiary;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.button {
+    padding: 8px 12px;
+    background: $--color-tertiary;
+    border-radius: 5px;
+    color: $--color-primary;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.button i:first-child {
+    margin-right: 6px;
+}

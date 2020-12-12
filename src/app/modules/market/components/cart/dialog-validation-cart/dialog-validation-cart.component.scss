@@ -1,0 +1,18 @@
+@import "src/colors.scss";
+
+
+
+.items {
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 360px;
+}
+
+.item {
+    width: 100%;
+}
+
+.total {
+    flex: 0 1 0;
+}
+

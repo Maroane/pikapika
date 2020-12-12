@@ -1,0 +1,30 @@
+@import "/src/colors.scss";
+
+.app-root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: none;
+}
+
+header {
+    flex: 0 1 60px;
+    background: $--color-tertiary;
+    color: $--color-primary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    -webkit-box-shadow: 2px 2px 13px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 13px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 13px 0px rgba(0,0,0,0.75);
+}
+
+img {height: 48px;}
+
+main {
+    flex: 1 1 0;
+    height: calc(100% - 60px);
+}

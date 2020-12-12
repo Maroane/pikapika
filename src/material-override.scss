@@ -1,0 +1,43 @@
+// ----------------------------- MAT BUTTON ---------------------------- //
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: $--color-tertiary;
+}
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    color: $--color-primary;
+}
+
+// ----------------------------- MAT SELECT ---------------------------- //
+
+
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: $--color-tertiary;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple { 
+    background-color: $--color-tertiary;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $--color-tertiary;
+}
+
+
+// ----------------------------- MAT CHECKBOX ---------------------------- //
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+    background: $--color-secondary;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: $--color-secondary;
+}
+
+.mat-checkbox-checkmark {
+    fill: $--color-primary;
+}
+
+.mat-checkbox-checkmark-path {
+    stroke: $--color-primary !important;
+}

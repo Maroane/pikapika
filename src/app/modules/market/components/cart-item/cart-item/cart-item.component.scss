@@ -1,0 +1,63 @@
+@import "/src/colors.scss";
+
+.cart-item-component {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: stretch;
+    border-bottom: solid 1px $--color-grey;
+}
+
+.img-container {
+    flex: 0 1 56px;
+    padding: 4px;
+}
+
+img {
+    width: 56px;
+    height: 100%;
+}
+
+.content {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 6px;
+    width: calc(100% - 76px);
+}
+
+.content footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
+.pokedex {
+    font-size: 11px;
+    line-height: 12px;
+    color: grey;
+}
+
+.counter{
+    flex: 1 1 0;
+}
+
+.price {
+    flex: 1 1 0;
+    text-align:center;
+    font-size: 16px;
+    font-weight: bold;
+    color: $--color-tertiary;
+}

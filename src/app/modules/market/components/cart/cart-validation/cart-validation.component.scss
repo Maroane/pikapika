@@ -1,0 +1,50 @@
+@import "src/colors.scss";
+
+.cart-validation-component {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px);
+    padding: 0 40px;
+    padding-bottom: 40px;
+}
+
+header{
+    flex: 0 1 0;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    color: $--color-tertiary;
+}
+
+header a {
+    width: fit-content;
+}
+
+header i {
+    font-size: 20px;
+    margin-right: 24px;
+    cursor: pointer;
+}
+
+
+header h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+
+.content {
+    flex: 1 1 0;
+}
+
+.total {
+    flex: 0 1 0;
+}
+
+footer {
+    flex: 0 1 0;
+    padding: 12px 0;
+    border-top: solid 1px $--color-grey;
+    display: flex;
+    justify-content: center;
+}

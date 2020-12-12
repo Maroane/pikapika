@@ -1,0 +1,7 @@
+<div class="cart-item-counter-component">
+    <div class="minus button" (click)="updateCounter(+count - 1)">-</div>
+    <div class="count">
+        <input type="number" [value]="inputCount" (blur)="handleChange($event)">
+    </div>
+    <div class="plus button" (click)="updateCounter(+count + 1)">+</div>
+</div>

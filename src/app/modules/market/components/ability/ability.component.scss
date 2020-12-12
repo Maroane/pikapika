@@ -1,0 +1,23 @@
+.ability-component {
+    display: flex;
+    flex-direction: column;
+}
+
+header h4 {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.infos { 
+    margin-bottom: 4px;
+}
+
+.infos-item {
+    display: flex;
+    align-items: center;
+}
+
+.infos-item .label { 
+    font-weight: bold;
+    margin-right: 8px;
+}

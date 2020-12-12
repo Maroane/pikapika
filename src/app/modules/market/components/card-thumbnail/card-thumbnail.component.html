@@ -1,0 +1,22 @@
+<div class="card-thumbnail-component">
+    <div class="img-container">
+        <a [routerLink]="['/market/cards', card.id]">
+            <img [src]="card.imageUrl" />
+        </a>
+    </div>
+    <div class="infos">
+        <a [routerLink]="['/market/cards', card.id]">
+            <div class="name">{{ card.name }}</div>
+        </a>
+        <div class="actions">
+            <div class="price">{{ card.price | currency:'EUR' }}</div>
+            <div class="button" (click)="handleAddToCart(card)" *ngIf="!item">
+                <i class="fas fa-plus"></i>
+                <i class="fas fa-cart-arrow-down"></i>
+            </div>
+            <div class="counter" *ngIf="item">
+                <app-cart-item-counter [count]="item.count" [cardId]="item.item.id"></app-cart-item-counter>
+            </div>
+        </div>
+    </div>
+</div>

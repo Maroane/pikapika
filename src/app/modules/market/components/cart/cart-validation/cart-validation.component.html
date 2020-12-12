@@ -1,0 +1,19 @@
+<div class="cart-validation-component">
+    <header>
+        <a routerLink="/market/cards">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <h2>Cart</h2>
+    </header>
+    <ng-container *ngIf="(items$ | async) as items">
+        <div class="content">
+            <app-cart-full [cart]="items"></app-cart-full>
+        </div>
+        <div class="total">
+            <app-cart-total [items]="items"></app-cart-total>
+        </div>
+        <footer>
+            <button mat-flat-button color="primary" (click)="openDialog()" [disabled]="items.length === 0">Pay</button>
+        </footer>
+    </ng-container>
+</div>

@@ -1,0 +1,15 @@
+<div class="market-template">
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    <aside>
+        <ng-container *ngIf="(items$|async) as items">
+            <app-cart [cart]="items"></app-cart>
+            <footer>
+                <a routerLink="/market/cart">
+                    <button mat-flat-button color="primary" [disabled]="items.length === 0">Validate and pay</button>
+                </a>
+            </footer>
+        </ng-container>
+    </aside>
+</div>
