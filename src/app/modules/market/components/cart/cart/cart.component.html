@@ -1,8 +1,6 @@
 <div class="cart-component">
     <header>
-        <i class="fas fa-shopping-cart"></i>
-        <div class="title">Cart ({{ totalItems }})</div>
-        <div class="price">{{ totalPrice | currency:'EUR' }}</div>
+        <app-cart-budget-header [cart]="cart"></app-cart-budget-header>
     </header>
     <div class="items">
         <div class="item" *ngFor="let item of cart">

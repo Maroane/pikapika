@@ -1,0 +1,54 @@
+<div class="cards-list-filters-component">
+    <div class="filter-item">
+        <mat-form-field>
+            <mat-label>Supertype</mat-label>
+            <mat-select (selectionChange)="handleSuperTypeChange($event)" [value]="filters.supertype">
+                <mat-option>All Supertype</mat-option>
+                <mat-option *ngFor="let supertype of supertypes" [value]="supertype">{{ supertype }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="filter-item">
+        <mat-form-field>
+            <mat-label>Types</mat-label>
+            <mat-select (selectionChange)="handleTypesChange($event)" multiple [value]="typesFilters">
+                <mat-option *ngFor="let type of typesWithIcons" [value]="type.type">
+                    <div class="mat-option">
+                        <img [src]="type.iconUrl" />
+                        <div>{{ type.type }}</div>
+                    </div>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="filter-item">
+        <mat-form-field>
+            <mat-label>Evolutionary stage</mat-label>
+            <mat-select (selectionChange)="handleSubTypeChange($event)" [value]="filters.subtype">
+                <mat-option>All stages</mat-option>
+                <mat-option value="Basic">Basic</mat-option>
+                <mat-option value="Stage 1">Stage 1</mat-option>
+                <mat-option value="Stage 2">Stage 2</mat-option>
+                <mat-option value="V">V</mat-option>
+                <mat-option value="VMAX">VMAX</mat-option>
+                <mat-option value="EX">EX</mat-option>
+                <mat-option value="MEGA">M-Pokémon EX</mat-option>
+                <mat-option value="BREAK">Break</mat-option>
+                <mat-option value="GX">GX</mat-option>
+                <mat-option value="LEGEND">Legend</mat-option>
+                <mat-option value="Special">Special</mat-option>
+                <mat-option value="TAG TEAM">Tag Team</mat-option>
+                <mat-option value="Restored">Restored</mat-option>
+                <mat-option value="Pokémon Tool">Pokémon Tool</mat-option>
+                <mat-option value="Rocket's Secret Machine">Rocket's Secret Machine</mat-option>
+                <mat-option value="Technical Machine">Technical Machine</mat-option>
+                <mat-option value="Supporter">Supporter</mat-option>
+                <mat-option value="Stadium">Stadium</mat-option>
+                <mat-option value="Item">Item</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="filter-item">
+        <mat-checkbox class="holo-check" (change)="handleHoloChange($event)" [checked]="filters.rarity">Holo Rare Only</mat-checkbox>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="cart-budget-header-component">
+    <div [class.danger]="totalAbove" [class.warning]="totalClose">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="title">Cart ({{ totalItems }})</div>
+        <div class="price">{{ totalPrice | currency:'EUR' }}</div>
+    </div>
+    <div>
+        <i class="fas fa-money-bill-wave"></i>
+        <div class="title">Budget</div>
+        <div class="budget">
+            <!-- We prevent the characters "e, +, -" to be used in the input -->
+            <input type="number" [value]="budget" (change)="handleChange($event)"
+                (keydown)="$event.keyCode !== 69 && $event.keyCode !== 187 && $event.keyCode !== 107 && $event.keyCode !== 109 && $event.keyCode !== 54" />
+        </div>
+        <i class="fas fa-euro-sign"></i>
+    </div>
+</div>

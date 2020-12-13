@@ -6,6 +6,7 @@ export enum ActionTypes {
   REMOVE_FROM_CART = '[Cart] REMOVE_FROM_CART',
   UPDATE_CART_ITEM_COUNT = '[Cart] UPDATE_CART_ITEM_COUNT',
   CLEAR_CART = '[Cart] CLEAR_CART',
+  UPDATE_BUDGET = '[Budget] UPDATE_BUDGET',
 }
 
 export class AddToCartAction implements Action {
@@ -28,4 +29,9 @@ export class ClearCartAction implements Action {
   constructor() {}
 }
 
-export type Actions = AddToCartAction | RemoveFromCartAction | UdpateCartItemCountAction | ClearCartAction;
+export class UpdateBudgetAction implements Action {
+  readonly type = ActionTypes.UPDATE_BUDGET;
+  constructor(public payload: { budget: number }) {}
+}
+
+export type Actions = AddToCartAction | RemoveFromCartAction | UdpateCartItemCountAction | ClearCartAction | UpdateBudgetAction;

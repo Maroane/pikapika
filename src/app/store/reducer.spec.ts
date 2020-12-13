@@ -24,6 +24,7 @@ describe('StateReducer', () => {
       const newCartItem = new CartItem(card);
       const newState: AppState = {
         cart: [newCartItem],
+        budget: 0,
       };
 
       const action = new StoreActions.AddToCartAction({ card: card });
@@ -49,9 +50,11 @@ describe('StateReducer', () => {
       const newCartItem = new CartItem(card);
       const initialState: AppState = {
         cart: [newCartItem],
+        budget: 0,
       };
       const newState: AppState = {
         cart: [newCartItem, newCartItem],
+        budget: 0,
       };
 
       const action = new StoreActions.AddToCartAction({ card: card });
@@ -80,11 +83,13 @@ describe('StateReducer', () => {
       const initialCartItem = new CartItem(card);
       const initialState: AppState = {
         cart: [initialCartItem],
+        budget: 0,
       };
       const newCartItem = new CartItem(card);
       newCartItem.count = 3;
       const newState: AppState = {
         cart: [newCartItem],
+        budget: 0,
       };
 
       const action = new StoreActions.UdpateCartItemCountAction({ count: 3, cardId: card.id });
@@ -142,9 +147,11 @@ describe('StateReducer', () => {
       const initialCartItem_c = new CartItem(card_c);
       const initialState: AppState = {
         cart: [initialCartItem_a, initialCartItem_b, initialCartItem_c],
+        budget: 0,
       };
       const newState: AppState = {
         cart: [initialCartItem_a, initialCartItem_c],
+        budget: 0,
       };
 
       const action = new StoreActions.RemoveFromCartAction({ cardId: card_b.id });
@@ -202,12 +209,46 @@ describe('StateReducer', () => {
       const initialCartItem_c = new CartItem(card_c);
       const initialState: AppState = {
         cart: [initialCartItem_a, initialCartItem_b, initialCartItem_c],
+        budget: 0,
       };
       const newState: AppState = {
         cart: [],
+        budget: 0,
       };
 
       const action = new StoreActions.ClearCartAction();
+      const state = reducer(initialState, action);
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('Update budget action', () => {
+    it('should update the budget', () => {
+      const card: Card = {
+        id: 'testIDa',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'supertype',
+        artist: 'artist',
+        price: 1,
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        setCode: 'setCode',
+        number: 1,
+      };
+      const initialCartItem = new CartItem(card);
+      const initialState: AppState = {
+        cart: [initialCartItem],
+        budget: 0,
+      };
+      const newState: AppState = {
+        cart: [initialCartItem],
+        budget: 150,
+      };
+
+      const action = new StoreActions.UpdateBudgetAction({ budget: 150 });
       const state = reducer(initialState, action);
       expect(state).toEqual(newState);
     });

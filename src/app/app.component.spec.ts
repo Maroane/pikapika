@@ -1,12 +1,15 @@
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent],
+      declarations: [AppComponent, RouterOutletStubComponent],
+      imports: [RouterTestingModule, SharedModule],
     }).compileComponents();
   });
 
@@ -22,3 +25,6 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('pikapika');
   });
 });
+
+@Component({ selector: 'router-outlet', template: '' })
+class RouterOutletStubComponent {}

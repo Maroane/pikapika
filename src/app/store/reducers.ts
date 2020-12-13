@@ -47,6 +47,14 @@ export function reducer(state: AppState = initialState, action: Actions) {
     case ActionTypes.CLEAR_CART: {
       return { ...state, cart: [] };
     }
+    case ActionTypes.UPDATE_BUDGET: {
+      const { budget } = action.payload;
+      let newBugdet = 0;
+      if (budget) {
+        newBugdet = budget;
+      }
+      return { ...state, budget: newBugdet };
+    }
 
     default:
       return state;

@@ -1,9 +1,7 @@
-import { CartItem } from '../../../../../models/cart-item.model';
-import { ActionTypes, RemoveFromCartAction } from '../../../../../store/actions';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import * as StoreActions from 'src/app/store/actions';
-import { NumberSymbol } from '@angular/common';
 
 @Component({
   selector: 'app-cart-item-counter',

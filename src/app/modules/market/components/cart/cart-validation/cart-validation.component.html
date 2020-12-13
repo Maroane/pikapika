@@ -13,7 +13,7 @@
             <app-cart-total [items]="items"></app-cart-total>
         </div>
         <footer>
-            <button mat-flat-button color="primary" (click)="openDialog()" [disabled]="items.length === 0">Pay</button>
+            <button mat-flat-button color="primary" (click)="openValidationDialog()" [disabled]="items.length === 0">Pay</button>
         </footer>
     </ng-container>
 </div>

@@ -1,9 +1,7 @@
-import { CartItem } from 'src/app/models/cart-item.model';
-import { Card } from '../../../../../models/card.model';
-import { SharedModule } from '../../../../../shared/shared.module';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
 
+import { CartItem } from 'src/app/models/cart-item.model';
 import { CartComponent } from './cart.component';
 
 describe('CartComponent', () => {
@@ -12,7 +10,7 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CartComponent],
+      declarations: [CartComponent, CartItemStubComponent, CartBudgetHeaderStubComponent],
     }).compileComponents();
   });
 
@@ -26,3 +24,21 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'app-cart-item',
+  template: '',
+})
+class CartItemStubComponent {
+  @Input()
+  cartItem: CartItem;
+}
+
+@Component({
+  selector: 'app-cart-budget-header',
+  template: '',
+})
+class CartBudgetHeaderStubComponent {
+  @Input()
+  cart: CartItem[];
+}

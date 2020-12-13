@@ -1,7 +1,9 @@
 <div class="cart-item-counter-component">
     <div class="minus button" (click)="updateCounter(+count - 1)">-</div>
     <div class="count">
-        <input type="number" [value]="inputCount" (blur)="handleChange($event)">
+        <!-- We prevent the characters "e, +, -" to be used in the input -->
+        <input type="number" [value]="inputCount" (change)="handleChange($event)"
+            (keydown)="$event.keyCode !== 69 && $event.keyCode !== 187 && $event.keyCode !== 107 && $event.keyCode !== 109 && $event.keyCode !== 54">
     </div>
     <div class="plus button" (click)="updateCounter(+count + 1)">+</div>
 </div>

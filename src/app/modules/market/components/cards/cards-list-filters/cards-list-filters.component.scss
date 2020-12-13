@@ -1,0 +1,20 @@
+.cards-list-filters-component {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-item:not(:first-child) {
+    margin-left: 16px;
+}
+
+.mat-option {
+    display: flex;
+    align-items: center;
+}
+
+.mat-option img {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+}

@@ -1,0 +1,27 @@
+.ability-component {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    padding: 16px 12px;
+    -webkit-box-shadow: 6px 10px 13px -7px rgba(0,0,0,0.47);
+    -moz-box-shadow: 6px 10px 13px -7px rgba(0,0,0,0.47);
+    box-shadow: 6px 10px 13px -7px rgba(0,0,0,0.47);
+
+}
+
+header h4 {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.infos-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.infos-item .label { 
+    font-weight: bold;
+    margin-right: 8px;
+}

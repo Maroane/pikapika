@@ -1,15 +1,17 @@
-import { reducer } from './store/reducers';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import localeFr from '@angular/common/locales/fr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-import { CoreModule } from './modules/core/core.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { environment } from './../environments/environment';
+import { CoreModule } from './modules/core/core.module';
+import { reducer } from './store/reducers';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -21,7 +23,8 @@ registerLocaleData(localeFr);
     CoreModule,
     StoreModule.forRoot({ appstate: reducer }),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
+      maxAge: 25,
+      logOnly: environment.production,
     }),
   ],
   providers: [

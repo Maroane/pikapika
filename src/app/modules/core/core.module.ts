@@ -1,8 +1,9 @@
-import { CoreRoutingModule } from './core-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotFoundComponent } from './components/errors/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { CoreRoutingModule } from './core-routing.module';
+import { NotFoundComponent } from './components/errors/not-found/not-found.component';
 
 @NgModule({
   declarations: [NotFoundComponent],

@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+
 import { CartItem } from 'src/app/models/cart-item.model';
 import { getTotalPrice, getTotalItems } from '../../../utils/cart.utils';
 
@@ -20,5 +19,12 @@ export class CartTotalComponent implements OnInit {
   ngOnInit(): void {
     this.totalPrice = getTotalPrice(this.items);
     this.totalItems = getTotalItems(this.items);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.items) {
+      this.totalPrice = getTotalPrice(this.items);
+      this.totalItems = getTotalItems(this.items);
+    }
   }
 }

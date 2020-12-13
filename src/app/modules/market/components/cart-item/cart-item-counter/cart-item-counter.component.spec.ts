@@ -1,5 +1,3 @@
-import { CartItem } from '../../../../../models/cart-item.model';
-import { Card } from '../../../../../models/card.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
@@ -16,6 +14,7 @@ describe('CartItemCounterComponent', () => {
   const initialState = {
     appstate: {
       cart: [],
+      budget: 0,
     },
   };
 

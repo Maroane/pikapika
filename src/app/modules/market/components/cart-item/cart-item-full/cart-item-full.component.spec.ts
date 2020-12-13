@@ -1,7 +1,8 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
+
 import { Card } from 'src/app/models/card.model';
 import { CartItem } from 'src/app/models/cart-item.model';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CartItemFullComponent } from './cart-item-full.component';
 
 describe('CartItemFullComponent', () => {
@@ -10,8 +11,8 @@ describe('CartItemFullComponent', () => {
   const card: Card = {
     id: 'testID',
     name: 'test',
-    imageUrl: 'url',
-    imageUrlHiRes: 'urlHiRes',
+    imageUrl: 'https://images.pokemontcg.io/ex8/100.png',
+    imageUrlHiRes: 'https://images.pokemontcg.io/ex8/100_hires.png',
     supertype: 'supertype',
     artist: 'artist',
     price: 1,
@@ -25,7 +26,7 @@ describe('CartItemFullComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CartItemFullComponent],
+      declarations: [CartItemFullComponent, CartItemCounterStubComponent],
     }).compileComponents();
   });
 
@@ -40,3 +41,14 @@ describe('CartItemFullComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'app-cart-item-counter',
+  template: '',
+})
+class CartItemCounterStubComponent {
+  @Input()
+  cardId: string;
+  @Input()
+  count: number;
+}

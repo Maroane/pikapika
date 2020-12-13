@@ -1,0 +1,47 @@
+@import "src/colors.scss";
+
+.cart-budget-header-component {
+    background: rgba($--color-tertiary, 0.3);
+    color: $--color-text;
+}
+
+.cart-budget-header-component > div {
+    display :flex;
+    align-items: center;
+}
+
+.warning {
+    background: $--color-warning;
+}
+
+.danger {
+    color: white;
+    background: $--color-danger;
+}
+
+i {
+    font-size: 16px;
+    margin: 12px 20px;
+}
+
+.title { 
+    margin-right: 20px;
+}
+
+ input {
+    width: 60px;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+ input:focus {
+    outline: none;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

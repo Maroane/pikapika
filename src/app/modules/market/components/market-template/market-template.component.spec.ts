@@ -1,7 +1,9 @@
-import { initialState } from '../../../../store/state';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
+import { CartItem } from './../../../../models/cart-item.model';
 import { MarketTemplateComponent } from './market-template.component';
 
 describe('MarketTemplateComponent', () => {
@@ -12,12 +14,14 @@ describe('MarketTemplateComponent', () => {
   const initialState = {
     appstate: {
       cart: [],
+      budget: 0,
     },
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MarketTemplateComponent],
+      declarations: [MarketTemplateComponent, CartStubComponent, RouterOutletStubComponent],
+      imports: [RouterTestingModule],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();
   });
@@ -33,3 +37,15 @@ describe('MarketTemplateComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'app-cart',
+  template: '',
+})
+class CartStubComponent {
+  @Input()
+  cart: CartItem[];
+}
+
+@Component({ selector: 'router-outlet', template: '' })
+class RouterOutletStubComponent {}

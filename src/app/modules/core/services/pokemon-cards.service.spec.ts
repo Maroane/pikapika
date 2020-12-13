@@ -1,20 +1,23 @@
-import { of } from 'rxjs';
-import { Card } from 'src/app/models/card.model';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { Card } from 'src/app/models/card.model';
 import { PokemonCardsService } from './pokemon-cards.service';
 
 describe('PokemonCardsService', () => {
   let service: PokemonCardsService;
-  let httpClientSpy: { get: jasmine.Spy };
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(PokemonCardsService);
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => {
+    httpTestingController.verify();
   });
 
   it('should be created', () => {
@@ -22,7 +25,7 @@ describe('PokemonCardsService', () => {
   });
 
   describe('GetAllCards()', () => {
-    it('should set the price right', () => {
+    it('should return the expected cards', () => {
       const card_a: any = {
         id: 'testID_a',
         name: 'test',
@@ -41,47 +44,7 @@ describe('PokemonCardsService', () => {
         name: 'test',
         imageUrl: 'url',
         imageUrlHiRes: 'urlHiRes',
-        supertype: 'supertype',
-        artist: 'artist',
-        rarity: 'rarity',
-        series: 'series',
-        set: 'set',
-        hp: '70',
-        setCode: 'setCode',
-        number: 1,
-      };
-
-      const expectedCards: Card[] = [card_a, card_b];
-
-      httpClientSpy.get.and.returnValue(of(card_a));
-
-      service.getAllCards().subscribe((data) => {
-        expect(data.cards).toEqual(expectedCards);
-      });
-    });
-  });
-
-  describe('GetOneCard()', () => {
-    it('should set the price right', () => {
-      const card_a: any = {
-        id: 'testID_a',
-        name: 'test',
-        imageUrl: 'url',
-        imageUrlHiRes: 'urlHiRes',
-        supertype: 'supertype',
-        artist: 'artist',
-        rarity: 'rarity',
-        series: 'series',
-        set: 'set',
-        setCode: 'setCode',
-        number: 1,
-      };
-      const card_b: any = {
-        id: 'testID_b',
-        name: 'test',
-        imageUrl: 'url',
-        imageUrlHiRes: 'urlHiRes',
-        supertype: 'supertype',
+        supertype: 'Pokémon',
         artist: 'artist',
         rarity: 'rarity',
         series: 'series',
@@ -109,7 +72,7 @@ describe('PokemonCardsService', () => {
         name: 'test',
         imageUrl: 'url',
         imageUrlHiRes: 'urlHiRes',
-        supertype: 'supertype',
+        supertype: 'Pokémon',
         artist: 'artist',
         price: 7,
         rarity: 'rarity',
@@ -120,18 +83,93 @@ describe('PokemonCardsService', () => {
         number: 1,
       };
 
-      httpClientSpy.get.and.returnValue(of(card_a));
+      const expectedCards: Card[] = [expectedCard_a, expectedCard_b];
 
-      service.getOneCard('testID_a').subscribe((data) => {
-        expect(data.card).toEqual(expectedCard_a);
-        expect(data.card).toEqual('brebis');
+      service.getAllCards().subscribe((resp) => {
+        expect(resp.body.cards).toEqual(expectedCards);
       });
 
-      httpClientSpy.get.and.returnValue(of(card_b));
+      const req = httpTestingController.expectOne(service['pokemonAPIUrl'] + service['cardsResource'] + '?pageSize=30&page=1');
+      expect(req.request.method).toEqual('GET');
 
-      service.getOneCard('testID_b').subscribe((data) => {
+      req.flush({
+        cards: [card_a, card_b],
+      });
+    });
+  });
+
+  describe('GetOneCard()', () => {
+    it('should return the expected card', () => {
+      const card_a: any = {
+        id: 'testID_a',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'supertype',
+        artist: 'artist',
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        setCode: 'setCode',
+        number: 1,
+      };
+      const card_b: any = {
+        id: 'testID_b',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'Pokémon',
+        artist: 'artist',
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        hp: '70',
+        setCode: 'setCode',
+        number: 1,
+      };
+      const expectedCard_a: Card = {
+        id: 'testID_a',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'supertype',
+        artist: 'artist',
+        price: 15,
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        setCode: 'setCode',
+        number: 1,
+      };
+      const expectedCard_b: Card = {
+        id: 'testID_b',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'Pokémon',
+        artist: 'artist',
+        price: 7,
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        hp: '70',
+        setCode: 'setCode',
+        number: 1,
+      };
+
+      service.getOneCard(card_a.id).subscribe((data) => {
+        expect(data.card).toEqual(expectedCard_a);
+      });
+      const req = httpTestingController.expectOne(service['pokemonAPIUrl'] + service['cardsResource'] + '/' + card_a.id);
+      expect(req.request.method).toEqual('GET');
+      req.flush({ card: card_a });
+
+      service.getOneCard(card_b.id).subscribe((data) => {
         expect(data.card).toEqual(expectedCard_b);
       });
+      const req2 = httpTestingController.expectOne(service['pokemonAPIUrl'] + service['cardsResource'] + '/' + card_b.id);
+      expect(req.request.method).toEqual('GET');
+      req2.flush({ card: card_b });
     });
   });
 
@@ -172,6 +210,70 @@ describe('PokemonCardsService', () => {
       };
       service.setAllCardsFilter();
       expect(service['_filters$'].value).toEqual(expectedFilter);
+    });
+  });
+
+  describe('assignPrice()', () => {
+    it('should set the price correctly', () => {
+      const card_a: any = {
+        id: 'testID_a',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'supertype',
+        artist: 'artist',
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        setCode: 'setCode',
+        number: 1,
+      };
+      const card_b: any = {
+        id: 'testID_b',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'Pokémon',
+        artist: 'artist',
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        hp: '70',
+        setCode: 'setCode',
+        number: 1,
+      };
+      const expectedCard_a: Card = {
+        id: 'testID_a',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'supertype',
+        artist: 'artist',
+        price: 15,
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        setCode: 'setCode',
+        number: 1,
+      };
+      const expectedCard_b: Card = {
+        id: 'testID_b',
+        name: 'test',
+        imageUrl: 'url',
+        imageUrlHiRes: 'urlHiRes',
+        supertype: 'Pokémon',
+        artist: 'artist',
+        price: 7,
+        rarity: 'rarity',
+        series: 'series',
+        set: 'set',
+        hp: '70',
+        setCode: 'setCode',
+        number: 1,
+      };
+
+      expect(service['assignPrice'](card_a)).toEqual(expectedCard_a);
+      expect(service['assignPrice'](card_b)).toEqual(expectedCard_b);
     });
   });
 });

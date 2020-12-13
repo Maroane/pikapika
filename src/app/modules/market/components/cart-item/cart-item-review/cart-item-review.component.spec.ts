@@ -1,7 +1,7 @@
-import { CartItem } from 'src/app/models/cart-item.model';
-import { Card } from 'src/app/models/card.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CartItem } from 'src/app/models/cart-item.model';
+import { Card } from 'src/app/models/card.model';
 import { CartItemReviewComponent } from './cart-item-review.component';
 
 describe('CartItemReviewComponent', () => {
@@ -10,8 +10,8 @@ describe('CartItemReviewComponent', () => {
   const card: Card = {
     id: 'testID',
     name: 'test',
-    imageUrl: 'url',
-    imageUrlHiRes: 'urlHiRes',
+    imageUrl: 'https://images.pokemontcg.io/ex8/100.png',
+    imageUrlHiRes: 'https://images.pokemontcg.io/ex8/100_hires.png',
     supertype: 'supertype',
     artist: 'artist',
     price: 1,

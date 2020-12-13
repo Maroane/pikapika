@@ -1,0 +1,93 @@
+@import "/src/colors.scss";
+
+.card-view-component {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    flex: 0 1 0;
+    padding: 12px 20px;
+}
+
+header a {
+    display: flex;
+    align-items: center;
+    color: $--color-tertiary;
+    width: fit-content;
+}
+
+header i {
+    font-size: 20px;
+    margin-right: 24px;
+    cursor: pointer;
+}
+
+.content {
+    flex: 1 1 0;
+    display: flex;
+    padding: 0 20px;
+}
+
+.img-container {
+    flex: 0 1 300px;
+    width: 300px;
+}
+
+.img-container img {
+    width: 300px;
+    cursor: pointer;
+}
+
+.infos {
+    flex: 1 1 0;
+    padding: 0 12px;
+} 
+
+.infos-item {
+    display: flex;
+    align-items: center;
+}
+
+.infos-item .label { 
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+
+.attack {
+    margin-bottom: 12px;
+}
+
+section {
+    padding: 22px 0 ;
+}
+
+section h3 {
+    margin-left: 12px;
+}
+
+.actions {
+    border-top: solid 1px $--color-grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 12px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: $--color-tertiary;
+}
+
+.loader-container {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

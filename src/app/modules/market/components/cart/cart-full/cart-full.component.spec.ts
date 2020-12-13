@@ -1,5 +1,7 @@
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CartItem } from './../../../../../models/cart-item.model';
 import { CartFullComponent } from './cart-full.component';
 
 describe('CartFullComponent', () => {
@@ -8,9 +10,8 @@ describe('CartFullComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartFullComponent ]
-    })
-    .compileComponents();
+      declarations: [CartFullComponent, CartItemFullStubComponent, CartBudgetHeaderStubComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -23,3 +24,21 @@ describe('CartFullComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'app-cart-item-full',
+  template: '',
+})
+class CartItemFullStubComponent {
+  @Input()
+  cartItem: CartItem;
+}
+
+@Component({
+  selector: 'app-cart-budget-header',
+  template: '',
+})
+class CartBudgetHeaderStubComponent {
+  @Input()
+  cart: CartItem[];
+}

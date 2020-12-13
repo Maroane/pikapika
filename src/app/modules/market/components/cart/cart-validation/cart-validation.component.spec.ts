@@ -1,9 +1,11 @@
-import { SharedModule } from '../../../../../shared/shared.module';
-import { CartItem } from 'src/app/models/cart-item.model';
-import { Card } from '../../../../../models/card.model';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
 
+import { CartItem } from './../../../../../models/cart-item.model';
+import { SharedModule } from '../../../../../shared/shared.module';
+import { Card } from '../../../../../models/card.model';
 import { CartValidationComponent } from './cart-validation.component';
 
 describe('CartValidationComponent', () => {
@@ -49,13 +51,14 @@ describe('CartValidationComponent', () => {
   const initialState = {
     appstate: {
       cart: [cartItem_a, cartItem_b],
+      budget: 0,
     },
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CartValidationComponent],
-      imports: [SharedModule],
+      declarations: [CartValidationComponent, CartFullStubComponent, CartTotalStubComponent],
+      imports: [SharedModule, RouterTestingModule],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();
   });
@@ -71,3 +74,21 @@ describe('CartValidationComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'app-cart-full',
+  template: '',
+})
+class CartFullStubComponent {
+  @Input()
+  cart: CartItem[];
+}
+
+@Component({
+  selector: 'app-cart-total',
+  template: '',
+})
+class CartTotalStubComponent {
+  @Input()
+  items: CartItem[];
+}

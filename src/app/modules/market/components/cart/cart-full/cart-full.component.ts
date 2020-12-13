@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+
 import { CartItem } from 'src/app/models/cart-item.model';
 import { getTotalPrice, getTotalItems } from '../../../utils/cart.utils';
 

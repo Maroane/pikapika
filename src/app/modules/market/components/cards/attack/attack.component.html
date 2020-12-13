@@ -1,0 +1,18 @@
+<div class="attack-component">
+    <header>
+        <h4>{{ attack.name }}</h4>
+    </header>
+    <div class="attack-infos">
+        <div class="infos-item">
+            <div class="label">Cost</div>
+            <div class="value" *ngFor="let iconUrl of typeIconUrls">
+                <img [src]="iconUrl" />
+            </div>
+        </div>
+        <div class="infos-item">
+            <div class="label">Damage</div>
+            <div class="value">{{ attack.damage }}</div>
+        </div>
+    </div>
+    <div class="text">{{ attack.text }}</div>
+</div>
