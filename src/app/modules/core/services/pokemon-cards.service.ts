@@ -123,7 +123,7 @@ export class PokemonCardsService {
   }
 
   private assignPrice(card: any): Card {
-    if (card.supertype === 'Pokémon') {
+    if (card.supertype === 'Pokémon' && card.hp) {
       card.price = card.hp / 10;
     } else {
       card.price = 15;
